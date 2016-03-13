@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +19,15 @@ import java.util.Random;
 public class PerguntasActivity extends AppCompatActivity {
     Pergunta p;
     TextView textViewTitulo;
-    RadioButton radioButtonR1;
-    RadioButton radioButtonR2;
-    RadioButton radioButtonR3;
-    RadioButton radioButtonR4;
+    RadioButton radioButton;
     int dificuldade;
     TextView textViewDebug;
+    public RadioGroup radio_g;
+    public RadioButton radioButtonR1;
+    public RadioButton radioButtonR2;
+    public RadioButton radioButtonR3;
+    public RadioButton radioButtonR4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,9 @@ public class PerguntasActivity extends AppCompatActivity {
         Log.i("Tamanhooooo", Integer.toString(round.size()));
 
         fillViewWithQuestion(round.get(0));
+        round.remove(0);
     }
+
 
     public void fillViewWithQuestion(Pergunta p){
         textViewTitulo.setText(p.titulo);
@@ -73,6 +79,7 @@ public class PerguntasActivity extends AppCompatActivity {
         radioButtonR2.setText(p.r2);
         radioButtonR3.setText(p.r3);
         radioButtonR4.setText(p.r4);
+
     }
 
     public List<Pergunta> RandomByLevel(List<Pergunta> perguntas, int dif){
@@ -115,8 +122,6 @@ public class PerguntasActivity extends AppCompatActivity {
         }
 
         textViewDebug.setText(out);
-
-
     }
 
     public void fillDatabase(){
@@ -178,13 +183,9 @@ public class PerguntasActivity extends AppCompatActivity {
     }
 
     public void buttonClickResponder(View v){
-        dificuldade = getIntent().getExtras().getInt("dificuldade");
-        Log.i("Dificuldade", Integer.toString(dificuldade));
 
-        TextView textViewDebug = (TextView) findViewById(R.id.textViewDebug);
-        textViewDebug.setText(Integer.toString(dificuldade));
 
-        showBank();
+
 
     }
 
