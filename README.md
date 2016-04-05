@@ -1,3 +1,3 @@
 # JogoPergunta
 
-Jogo de perguntas e respostas desenvolvido em Java pra Smartphones Android.
+Jogo de perguntas e respostas desenvolvido em Java para Smartphones Android.
